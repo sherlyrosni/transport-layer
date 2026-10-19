@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="description" content="Modul belajar mandiri Transport Layer dan Layanan Jaringan untuk S1 Ilmu Perpustakaan."/>
+  <title>Transport Layer & Layanan Jaringan</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="brandmark">ILPUS</div>
+    <div>
+      <strong>Jaringan Komputer</strong>
+      <span>Pertemuan 9 · Transport Layer & Layanan Jaringan</span>
+    </div>
+  </div>
+  <div class="top-actions">
+    <button id="themeBtn" class="icon-btn" aria-label="Ganti tema">◐</button>
+    <button id="resetBtn" class="ghost-btn">Reset progres</button>
+  </div>
+</header>
+
+<aside class="sidebar" id="sidebar">
+  <div class="progress-card">
+    <div class="progress-head"><span>Progres belajar</span><b id="progressText">0%</b></div>
+    <div class="progress-track"><i id="progressFill"></i></div>
+  </div>
+  <nav>
+    <button class="nav-btn active" data-section="home"><span>01</span>Mulai</button>
+    <button class="nav-btn" data-section="journey"><span>02</span>Perjalanan Request</button>
+    <button class="nav-btn" data-section="transport"><span>03</span>Transport Layer</button>
+    <button class="nav-btn" data-section="tcpudp"><span>04</span>TCP vs UDP</button>
+    <button class="nav-btn" data-section="services"><span>05</span>Layanan Jaringan</button>
+    <button class="nav-btn" data-section="layers"><span>06</span>Dari Aplikasi ke Media</button>
+    <button class="nav-btn" data-section="detective"><span>07</span>Service Detective</button>
+    <button class="nav-btn" data-section="quiz"><span>08</span>Kuis Akhir</button>
+  </nav>
+  <div class="tip">
+    <b>Mode belajar mandiri</b>
+    <p>Baca penjelasan, klik simulasi, lalu cek pemahamanmu.</p>
+  </div>
+</aside>
+
+<button id="menuBtn" class="menu-btn" aria-label="Buka menu">☰</button>
+
+<main>
+<section id="home" class="lesson active">
+  <div class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow">MODUL BELAJAR MANDIRI</span>
+      <h1>Bagaimana <em>satu laptop</em> bisa membuka OPAC, video call, dan email sekaligus?</h1>
+      <p class="lead">Kita akan mengikuti perjalanan data dari saat laptop terhubung ke jaringan, mendapatkan IP, mencari server, memilih aplikasi tujuan, membangun koneksi, hingga halaman web tampil.</p>
+      <div class="actions">
+        <button class="primary" data-go="journey">Mulai simulasi →</button>
+        <button class="secondary" data-go="transport">Lihat konsep inti</button>
+      </div>
+      <div class="goal-grid">
+        <div><b>01</b><span>Memahami fungsi Transport Layer</span></div>
+        <div><b>02</b><span>Membedakan TCP dan UDP</span></div>
+        <div><b>03</b><span>Memahami port dan socket</span></div>
+        <div><b>04</b><span>Mengenali DHCP, DNS, HTTP, HTTPS</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="screen-card">
+        <div class="browser">
+          <div class="browserbar"><span>● ● ●</span><code>opac.perpustakaan.ac.id</code></div>
+          <div class="opac">
+            <div class="opac-title">OPAC</div>
+            <div class="line w80"></div><div class="line w55"></div>
+            <div class="cards"><i></i><i></i><i></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="server s1">DNS</div>
+      <div class="server s2">WEB</div>
+      <div class="bubble b1">DHCP</div>
+      <div class="bubble b2">TCP</div>
+      <div class="bubble b3">443</div>
+    </div>
+  </div>
+
+  <div class="four-strip">
+    <article><b>IP</b><span>Komputer mana?</span></article>
+    <article><b>PORT</b><span>Aplikasi mana?</span></article>
+    <article><b>TCP / UDP</b><span>Bagaimana dikirim?</span></article>
+    <article><b>DNS / DHCP</b><span>Layanan apa?</span></article>
+  </div>
+
+  <div class="callout orange">
+    <span>?</span>
+    <div>
+      <b>Pertanyaan kunci</b>
+      <p>IP Address sudah bisa membawa data ke host yang benar. Tetapi setelah data sampai ke host, bagaimana sistem tahu data itu untuk browser, email, atau aplikasi lain?</p>
+    </div>
+  </div>
+</section>
+
+<section id="journey" class="lesson">
+  <div class="section-head">
+    <span class="eyebrow">SIMULASI UTAMA</span>
+    <h2>Perjalanan satu request: dari Wi‑Fi sampai OPAC tampil</h2>
+    <p>Gunakan tombol berikutnya. Setiap tahap menjelaskan <b>apa yang terjadi</b> dan <b>mengapa itu dibutuhkan</b>.</p>
+  </div>
+  <div class="journey-layout">
+    <div class="map">
+      <div class="node client active-node" id="nodeClient">💻<b>Laptop</b><small id="clientStatus">Baru tersambung</small></div>
+      <div class="node network" id="nodeNetwork">📡<b>Router/AP</b><small>Jaringan lokal</small></div>
+      <div class="node dns" id="nodeDns">📖<b>DNS</b><small>Nama → IP</small></div>
+      <div class="node web" id="nodeWeb">🗄️<b>Server OPAC</b><small>HTTPS :443</small></div>
+      <svg class="map-lines" viewBox="0 0 700 420" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M125 330 C230 250,260 180,345 140"/>
+        <path d="M360 130 C450 80,525 80,600 110"/>
+        <path d="M600 140 C610 210,610 260,590 315"/>
+      </svg>
+      <div class="packet" id="packet">START</div>
+    </div>
+    <div class="explain-panel">
+      <div class="stepno" id="stepNo">Langkah 1 dari 7</div>
+      <h3 id="stepTitle"></h3>
+      <p id="stepText"></p>
+      <div class="why" id="stepWhy"></div>
+      <div class="actions split">
+        <button class="secondary" id="prevStep">← Sebelumnya</button>
+        <button class="primary" id="nextStep">Berikutnya →</button>
+      </div>
+    </div>
+  </div>
+  <div class="timeline-mini">
+    <div><span>1</span><b>DHCP</b><small>dapat konfigurasi</small></div>
+    <div><span>2</span><b>DNS</b><small>nama menjadi IP</small></div>
+    <div><span>3</span><b>PORT</b><small>pilih layanan</small></div>
+    <div><span>4</span><b>TCP</b><small>bangun koneksi</small></div>
+    <div><span>5</span><b>HTTPS</b><small>request web</small></div>
+  </div>
+</section>
+
+<section id="transport" class="lesson">
+  <div class="section-head">
+    <span class="eyebrow">KONSEP INTI</span>
+    <h2>Transport Layer: host sudah benar, sekarang aplikasi mana?</h2>
+  </div>
+
+  <div class="layer-stack">
+    <div class="layer application"><span>APPLICATION</span><div class="apps">🌐 Browser · ✉️ Email · 🎥 Video call</div></div>
+    <div class="layer transport focus"><span>TRANSPORT</span><b>Port + TCP / UDP</b><p>Menghubungkan data dengan proses/aplikasi yang tepat</p></div>
+    <div class="layer network"><span>NETWORK</span><b>IP Address</b><p>Membawa paket ke host yang benar</p></div>
+  </div>
+
+  <div class="analogy">
+    <div class="building">
+      <div class="roof">🏢</div>
+      <div class="floor"><b>443</b><span>HTTPS / web</span></div>
+      <div class="floor"><b>53</b><span>DNS</span></div>
+      <div class="floor"><b>50000+</b><span>port sementara</span></div>
+    </div>
+    <div>
+      <span class="eyebrow">ANALOGI</span>
+      <h3>IP = alamat gedung, port = nomor ruangan</h3>
+      <p><b>IP Address</b> membantu data tiba di komputer yang benar. <b>Port</b> membantu sistem menyerahkan data ke aplikasi/layanan yang benar.</p>
+      <div class="endpoint"><code>192.168.1.10:<mark>443</mark></code><small>IP → host &nbsp;&nbsp; | &nbsp;&nbsp; Port → layanan</small></div>
+    </div>
+  </div>
+
+  <div class="interactive-box dark">
+    <div>
+      <span class="eyebrow">COBA SENDIRI</span>
+      <h3>Port sorter</h3>
+      <p>Pilih port yang paling cocok untuk layanan berikut.</p>
+    </div>
+    <div>
+      <div class="tabs" id="serviceTabs">
+        <button class="active" data-service="HTTPS">HTTPS</button>
+        <button data-service="HTTP">HTTP</button>
+        <button data-service="DNS">DNS</button>
+        <button data-service="DHCP">DHCP</button>
+      </div>
+      <div class="port-options">
+        <button data-port="53">53</button>
+        <button data-port="67/68">67/68</button>
+        <button data-port="80">80</button>
+        <button data-port="443">443</button>
+      </div>
+      <p class="feedback" id="portFeedback">Pilih satu port.</p>
+    </div>
+  </div>
+
+  <div class="cards3">
+    <article><span class="eyebrow">PORT</span><h3>Port number</h3><p>Nomor logis yang membantu sistem mengidentifikasi aplikasi atau layanan tujuan.</p></article>
+    <article><span class="eyebrow">SOCKET</span><h3>IP + Port</h3><p>Kombinasi IP Address dan port dapat digunakan untuk mengidentifikasi endpoint komunikasi.</p></article>
+    <article><span class="eyebrow">PROCESS</span><h3>Process-to-process</h3><p>Transport Layer membantu komunikasi bukan hanya antarhost, tetapi antarproses/aplikasi.</p></article>
+  </div>
+</section>
+
+<section id="tcpudp" class="lesson">
+  <div class="section-head">
+    <span class="eyebrow">DUA CARA TRANSPORT</span>
+    <h2>TCP vs UDP: bukan “bagus vs jelek”</h2>
+    <p>Pilihannya bergantung pada kebutuhan aplikasi.</p>
+  </div>
+
+  <div class="duel">
+    <article class="protocol tcp">
+      <div class="protohead"><b>TCP</b><span>Connection-oriented</span></div>
+      <h3>Ketika reliabilitas penting</h3>
+      <ul>
+        <li>Membangun koneksi lebih dulu</li>
+        <li>Menggunakan acknowledgement</li>
+        <li>Menjaga urutan data</li>
+        <li>Dapat melakukan retransmission</li>
+      </ul>
+      <div class="use">Contoh konsep: web tradisional / HTTPS</div>
+    </article>
+    <div class="vs">VS</div>
+    <article class="protocol udp">
+      <div class="protohead"><b>UDP</b><span>Connectionless</span></div>
+      <h3>Ketika overhead rendah penting</h3>
+      <ul>
+        <li>Tidak membangun koneksi seperti TCP</li>
+        <li>Tidak menjamin delivery/order pada level UDP</li>
+        <li>Lebih ringan</li>
+        <li>Cocok untuk banyak aplikasi real-time</li>
+      </ul>
+      <div class="use">Contoh konsep: DNS query, voice/video real-time</div>
+    </article>
+  </div>
+
+  <div class="handshake">
+    <div>
+      <span class="eyebrow">SIMULASI TCP</span>
+      <h3>Three-way handshake</h3>
+      <p>Tekan tombol satu per satu. Handshake ini membangun koneksi; <b>bukan</b> isi halaman webnya.</p>
+      <div class="actions">
+        <button id="hsBtn" class="primary">Mulai: kirim SYN</button>
+        <button id="hsReset" class="secondary">Ulangi</button>
+      </div>
+    </div>
+    <div class="hs-stage">
+      <div class="end">💻<b>Client</b></div>
+      <div class="road">
+        <div class="msg syn" id="syn">SYN →</div>
+        <div class="msg synack" id="synack">← SYN + ACK</div>
+        <div class="msg ack" id="ack">ACK →</div>
+      </div>
+      <div class="end">🗄️<b>Server</b></div>
+      <div class="badge" id="hsBadge">Belum terhubung</div>
+    </div>
+  </div>
+
+  <div class="scenario-area">
+    <h3>Mana yang lebih masuk akal?</h3>
+    <div id="protocolScenarios"></div>
+  </div>
+
+  <div class="callout yellow">
+    <span>!</span>
+    <div><b>Jangan keliru</b><p>“UDP tidak reliable seperti TCP” bukan berarti “UDP tidak aman”. Reliability dan security adalah konsep yang berbeda.</p></div>
+  </div>
+</section>
+
+<section id="services" class="lesson">
+  <div class="section-head">
+    <span class="eyebrow">LAYANAN JARINGAN</span>
+    <h2>Empat layanan yang sering kamu pakai tanpa sadar</h2>
+  </div>
+
+  <div class="service-grid">
+    <article>
+      <div class="service-icon">🏷️</div>
+      <h3>DHCP</h3>
+      <p>Memberikan konfigurasi jaringan secara otomatis kepada klien.</p>
+      <div class="chips"><span>IP</span><span>Subnet Mask</span><span>Gateway</span><span>DNS Server</span></div>
+      <button class="mini" data-modal="dhcpModal">Lihat alur DORA</button>
+    </article>
+    <article>
+      <div class="service-icon">📖</div>
+      <h3>DNS</h3>
+      <p>Menerjemahkan nama domain menjadi IP Address.</p>
+      <div class="mapping"><b>opac.um.ac.id</b><span>→</span><code>203.0.113.25</code></div>
+      <button class="mini" data-modal="dnsModal">Lihat contoh</button>
+    </article>
+    <article>
+      <div class="service-icon">🌐</div>
+      <h3>HTTP</h3>
+      <p>Protokol aplikasi untuk pertukaran request dan response web.</p>
+      <div class="portbadge">Port 80</div>
+    </article>
+    <article>
+      <div class="service-icon">🔒</div>
+      <h3>HTTPS</h3>
+      <p>HTTP yang dilindungi TLS agar komunikasi web lebih terlindungi.</p>
+      <div class="portbadge">Port 443</div>
+    </article>
+  </div>
+
+  <div class="compare">
+    <h3>DHCP dan DNS sering tertukar. Bedakan dengan satu pertanyaan:</h3>
+    <div class="compare-grid">
+      <div><b>DHCP</b><p>“Laptop saya dapat konfigurasi IP dari mana?”</p></div>
+      <div><b>DNS</b><p>“Nama website ini IP-nya berapa?”</p></div>
+    </div>
+  </div>
+
+  <div class="storyflow">
+    <h3>Satu cerita lengkap</h3>
+    <div class="flowbuttons">
+      <button class="active" data-flow="0"><span>1</span>Join Wi‑Fi</button>
+      <button data-flow="1"><span>2</span>DHCP</button>
+      <button data-flow="2"><span>3</span>DNS</button>
+      <button data-flow="3"><span>4</span>TCP</button>
+      <button data-flow="4"><span>5</span>HTTPS</button>
+    </div>
+    <div id="flowExplain" class="flowexplain"></div>
+  </div>
+</section>
+
+<section id="layers" class="lesson">
+  <div class="section-head">
+    <span class="eyebrow">MENYATUKAN MATERI</span>
+    <h2>Satu request, banyak layer</h2>
+    <p>Klik setiap layer untuk melihat tanggung jawabnya.</p>
+  </div>
+
+  <div class="stack-explorer">
+    <div class="stack-buttons">
+      <button class="active" data-layer="application"><span>7–5</span><b>Application</b><small>HTTPS</small></button>
+      <button data-layer="transport"><span>4</span><b>Transport</b><small>TCP + Port</small></button>
+      <button data-layer="network"><span>3</span><b>Network</b><small>IP</small></button>
+      <button data-layer="datalink"><span>2</span><b>Data Link</b><small>MAC / Frame</small></button>
+      <button data-layer="physical"><span>1</span><b>Physical</b><small>Signal / Media</small></button>
+    </div>
+    <div class="stack-detail">
+      <span class="eyebrow" id="layerLabel"></span>
+      <h3 id="layerTitle"></h3>
+      <p id="layerText"></p>
+      <div id="layerPieces" class="pieces"></div>
+    </div>
+  </div>
+
+  <div class="callout green">
+    <span>✓</span>
+    <div><b>Hubungkan dengan P4 dan P5</b><p>ARP membantu menemukan MAC pada link lokal. Transport Layer memastikan data menuju proses/aplikasi yang tepat. Keduanya bekerja pada bagian berbeda dari perjalanan yang sama.</p></div>
+  </div>
+</section>
+
+<section id="detective" class="lesson">
+  <div class="section-head">
+    <span class="eyebrow">STUDI KASUS</span>
+    <h2>Service Detective</h2>
+    <p>Internet “bermasalah” tidak selalu berarti penyebabnya sama. Baca gejalanya, lalu pilih tersangka paling logis.</p>
+  </div>
+
+  <div class="casebox">
+    <div class="casehead" id="caseNum"></div>
+    <h3 id="caseTitle"></h3>
+    <p id="caseText"></p>
+    <div class="evidence" id="caseEvidence"></div>
+  </div>
+  <div class="suspects" id="suspects"></div>
+  <div class="detective-feedback" id="detectiveFeedback">Pilih salah satu tersangka.</div>
+  <div class="actions split">
+    <button id="casePrev" class="secondary">← Sebelumnya</button>
+    <button id="caseNext" class="primary">Kasus berikutnya →</button>
+  </div>
+</section>
+
+<section id="quiz" class="lesson">
+  <div class="section-head">
+    <span class="eyebrow">CHECK YOUR UNDERSTANDING</span>
+    <h2>Kuis akhir</h2>
+    <p>10 soal. Nilai minimal yang disarankan sebelum lanjut materi berikutnya: <b>80</b>.</p>
+  </div>
+  <div class="quizbox" id="quizBox">
+    <div class="quiztop">
+      <div>
+        <span id="quizProgress">Soal 1/10</span>
+        <div class="quiztrack"><i id="quizBar"></i></div>
+      </div>
+      <div class="score">Skor <b id="liveScore">0</b></div>
+    </div>
+    <div id="quizArea"></div>
+    <div class="actions right"><button id="quizNext" class="primary" disabled>Soal berikutnya →</button></div>
+  </div>
+
+  <div class="result hidden" id="result">
+    <div class="result-ring"><b id="finalScore">0</b><span>/100</span></div>
+    <div>
+      <span class="eyebrow">HASIL BELAJAR</span>
+      <h3 id="resultTitle"></h3>
+      <p id="resultText"></p>
+      <button id="retryQuiz" class="secondary">Ulangi kuis</button>
+    </div>
+  </div>
+
+  <div class="summary">
+    <h3>Ringkasan 60 detik</h3>
+    <div class="summary-grid">
+      <div><b>IP</b><span>host tujuan</span></div>
+      <div><b>Port</b><span>aplikasi/layanan</span></div>
+      <div><b>TCP</b><span>reliable, connection-oriented</span></div>
+      <div><b>UDP</b><span>ringan, connectionless</span></div>
+      <div><b>DHCP</b><span>konfigurasi IP otomatis</span></div>
+      <div><b>DNS</b><span>nama → IP</span></div>
+      <div><b>HTTP</b><span>web, port 80</span></div>
+      <div><b>HTTPS</b><span>web + TLS, port 443</span></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="modal-bg" id="modalBg">
+  <div class="modal" id="dhcpModal">
+    <button class="close">×</button>
+    <span class="eyebrow">DHCP DORA</span>
+    <h3>Bagaimana laptop mendapatkan konfigurasi?</h3>
+    <div class="dora">
+      <div><b>D</b><span>Discover</span><small>“Ada DHCP server?”</small></div>
+      <div><b>O</b><span>Offer</span><small>“Saya punya konfigurasi.”</small></div>
+      <div><b>R</b><span>Request</span><small>“Saya ingin memakai tawaran itu.”</small></div>
+      <div><b>A</b><span>Acknowledge</span><small>“Baik, konfigurasi diberikan.”</small></div>
+    </div>
+    <p class="muted">Untuk pertemuan ini cukup pahami fungsi dan alur konseptualnya.</p>
+  </div>
+  <div class="modal" id="dnsModal">
+    <button class="close">×</button>
+    <span class="eyebrow">DNS LOOKUP</span>
+    <h3>Manusia mengingat nama, komputer membutuhkan alamat</h3>
+    <div class="dnsdemo"><b>opac.perpustakaan.ac.id</b><span>→ DNS →</span><code>203.0.113.25</code></div>
+    <p>DNS tidak memberikan IP ke laptop. DNS membantu mencari IP yang terkait dengan nama domain.</p>
+  </div>
+</div>
+
+<footer>
+  <p>NPUS236017 Jaringan Komputer · S1 Ilmu Perpustakaan · Modul interaktif belajar mandiri</p>
+  <p class="muted">Bisa dijalankan langsung via GitHub Pages tanpa backend atau domain berbayar.</p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
