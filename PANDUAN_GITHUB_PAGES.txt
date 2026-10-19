@@ -1,21 +1,26 @@
-PANDUAN CEPAT GITHUB PAGES
+PANDUAN SINGKAT UPLOAD KE GITHUB PAGES
 
-1. Buka https://github.com dan login.
+1. Buka https://github.com lalu login.
 2. Klik New repository.
-3. Nama repository: transport-layer-interaktif
-4. Pilih Public -> Create repository.
-5. Klik Add file -> Upload files.
-6. Upload index.html, styles.css, app.js, README.md.
-7. Klik Commit changes.
-8. Buka Settings -> Pages.
-9. Source: Deploy from a branch.
-10. Branch: main.
-11. Folder: /(root).
-12. Klik Save.
-13. Tunggu beberapa menit.
-14. Buka URL yang diberikan GitHub Pages.
+3. Nama: transport-layer-interaktif
+4. Pilih Public.
+5. Klik Create repository.
+6. Klik Add file -> Upload files.
+7. Upload:
+   - index.html
+   - styles.css
+   - app.js
+   - README.md
+8. Klik Commit changes.
+9. Buka Settings -> Pages.
+10. Source: Deploy from a branch.
+11. Branch: main.
+12. Folder: /(root).
+13. Klik Save.
+14. Tunggu beberapa menit.
+15. Buka URL GitHub Pages yang muncul.
 
-Contoh URL:
+Contoh:
 https://USERNAME.github.io/transport-layer-interaktif/
 
-Tidak perlu domain, hosting, backend, atau database.
+Tidak perlu domain berbayar.
