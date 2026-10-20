@@ -28,50 +28,6 @@ Tidak perlu instalasi.
 3. Klik dua kali `index.html`.
 4. Website terbuka di browser.
 
-## Publish gratis menggunakan GitHub Pages
-
-### A. Buat repository
-1. Buka https://github.com
-2. Login / buat akun.
-3. Klik **New repository**.
-4. Nama repository, misalnya: `transport-layer-interaktif`
-5. Pilih **Public**
-6. Klik **Create repository**
-
-### B. Upload file
-1. Di repository baru, klik **Add file → Upload files**.
-2. Upload:
-   - `index.html`
-   - `styles.css`
-   - `app.js`
-   - `README.md`
-3. Klik **Commit changes**.
-
-> `index.html` harus berada langsung di root repository.
-
-### C. Aktifkan GitHub Pages
-1. Buka **Settings**
-2. Pilih **Pages**
-3. Pada **Build and deployment**:
-   - Source: `Deploy from a branch`
-   - Branch: `main`
-   - Folder: `/(root)`
-4. Klik **Save**
-
-### D. Tunggu deploy
-Biasanya beberapa menit.
-
-Alamat akan berbentuk:
-`https://USERNAME.github.io/transport-layer-interaktif/`
-
-Tidak perlu membeli domain atau hosting.
-
-## Update web
-Jika ada revisi:
-1. Edit file lokal.
-2. Upload ulang file yang berubah ke repository.
-3. Commit changes.
-4. GitHub Pages otomatis deploy ulang.
 
 ## Catatan
 - Website statis.
